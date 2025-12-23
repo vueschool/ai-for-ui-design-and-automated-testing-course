@@ -4,13 +4,42 @@
 @source "../../../content/**/*";
 
 @theme static {
-  --font-sans: 'Public Sans', sans-serif;
+  /* Typography - Outfit for headings, Inter for body */
+  --font-heading: 'Outfit', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
   --font-serif: 'Instrument Serif', serif;
+
+  /* Custom Orange Color Palette (#F6512F) */
+  --color-orange-50: #fff4f2;
+  --color-orange-100: #ffe5e0;
+  --color-orange-200: #ffd0c7;
+  --color-orange-300: #ffb0a3;
+  --color-orange-400: #ff8269;
+  --color-orange-500: #F6512F;
+  --color-orange-600: #e63d1a;
+  --color-orange-700: #c22f0f;
+  --color-orange-800: #a0280d;
+  --color-orange-900: #842510;
+  --color-orange-950: #480f06;
+
+  /* Custom Red Color Palette (#E71407) */
+  --color-red-50: #fff1f1;
+  --color-red-100: #ffe1e1;
+  --color-red-200: #ffc7c7;
+  --color-red-300: #ffa0a0;
+  --color-red-400: #ff6b6b;
+  --color-red-500: #E71407;
+  --color-red-600: #d10d00;
+  --color-red-700: #b00c00;
+  --color-red-800: #920f00;
+  --color-red-900: #7a1200;
+  --color-red-950: #420600;
 }
 
 :root {
   --ui-container: var(--container-4xl);
 
+  /* Light mode selection */
   ::selection {
     color: #282a30;
     background-color: #c8c8c8;
@@ -18,8 +47,64 @@
 }
 
 .dark {
+  /* Dark mode background - Deep neutral dark */
+  background-color: #121619;
+
+  /* Dark mode selection */
   ::selection {
     color: #ffffff;
     background-color: #474747;
   }
+
+  /* Warm gradient theme CSS variables */
+  --ui-bg: #121619;
+  --ui-bg-muted: rgba(18, 22, 25, 0.8);
+  --ui-bg-elevated: rgba(30, 35, 40, 0.6);
+  --ui-bg-accented: rgba(40, 45, 50, 0.8);
+
+  /* Text colors for dark mode */
+  --ui-text-dimmed: rgba(255, 255, 255, 0.4);
+  --ui-text-muted: rgba(255, 255, 255, 0.6);
+  --ui-text-toned: rgba(255, 255, 255, 0.7);
+  --ui-text: rgba(255, 255, 255, 0.9);
+  --ui-text-highlighted: #ffffff;
+
+  /* Border colors with warm gradient strokes */
+  --ui-border: rgba(246, 81, 47, 0.2);
+  --ui-border-muted: rgba(246, 81, 47, 0.1);
+  --ui-border-accented: rgba(231, 20, 7, 0.3);
+}
+
+/* Glassmorphism utility classes */
+.glass {
+  background: rgba(18, 22, 25, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glass-strong {
+  background: rgba(18, 22, 25, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Gradient utilities for warm orange/red gradients */
+.gradient-primary {
+  background: linear-gradient(135deg, #F6512F 0%, #E71407 100%);
+}
+
+.gradient-primary-glow {
+  background: linear-gradient(135deg, #F6512F 0%, #E71407 100%);
+  box-shadow: 0 0 20px rgba(246, 81, 47, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.gradient-border {
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, rgba(246, 81, 47, 0.3), rgba(231, 20, 7, 0.3)) padding-box,
+              linear-gradient(135deg, #F6512F, #E71407) border-box;
+}
+
+/* Typography utilities */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
