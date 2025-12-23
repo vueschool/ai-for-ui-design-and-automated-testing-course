@@ -10,17 +10,17 @@
   --font-serif: 'Instrument Serif', serif;
 
   /* Custom Orange Color Palette (#F6512F) */
-  --color-orange-50: #fff4f2;
-  --color-orange-100: #ffe5e0;
-  --color-orange-200: #ffd0c7;
-  --color-orange-300: #ffb0a3;
-  --color-orange-400: #ff8269;
-  --color-orange-500: #F6512F;
-  --color-orange-600: #e63d1a;
-  --color-orange-700: #c22f0f;
-  --color-orange-800: #a0280d;
-  --color-orange-900: #842510;
-  --color-orange-950: #480f06;
+  --color-orange-50: #ffe5e0;
+  --color-orange-100: #ffd0c7;
+  --color-orange-200: #ffb0a3;
+  --color-orange-300: #ff8269;
+  --color-orange-400: #F6512F;
+  --color-orange-500: #e63d1a;
+  --color-orange-600: #c22f0f;
+  --color-orange-700: #a0280d;
+  --color-orange-800: #842510;
+  --color-orange-900: #480f06;
+  --color-orange-950: #3c0c05;
 
   /* Custom Red Color Palette (#E71407) */
   --color-red-50: #fff1f1;

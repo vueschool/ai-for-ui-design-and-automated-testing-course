@@ -1,120 +1,170 @@
 seo:
-  title: "Emma Thompson - UX/UI Designer"
-  description: "Welcome to my portfolio! I'm Emma Thompson, a UX/UI designer and front-end developer based in Boston. I specialize in creating user-centered digital experiences that are both beautiful and functional."
-title: "Hey, I'm Emma Thompson UX/UI Designer"
-description: "I craft intuitive digital experiences where design meets functionality. Based in Boston, bringing ideas to life through code and creativity."
+  title: "Mentora - Connect with Expert Teachers for Personal Online Video Classes"
+  description: "Mentora connects students with experienced teachers through personalized online video classes. Find your perfect tutor and start learning today."
+title: "Learn from Expert Teachers, Anytime, Anywhere"
+description: "Connect with experienced educators through personalized online video classes. Find your perfect teacher and start your learning journey today."
 hero:
   links:
-    - label: "Use this template"
-      to: https://github.com/nuxt-ui-templates/portfolio
+    - label: "Find a Teacher"
+      to: "/teachers"
+      color: "primary"
+    - label: "Become a Teacher"
+      to: "/teach"
       color: "neutral"
+      variant: "outline"
   images:
     - src: /hero/random-1.avif
-      alt: Random Image 1
+      alt: Student learning online
     - src: /hero/random-2.avif
-      alt: Random Image 2
+      alt: Teacher conducting video class
     - src: /hero/random-3.avif
-      alt: Random Image 3
+      alt: Online education
     - src: /hero/random-4.avif
-      alt: Random Image 4
+      alt: Video call learning
     - src: /hero/random-5.avif
-      alt: Random Image 5
-    - src: /hero/random-6.avif
-      alt: Random Image 6
-    - src: /hero/random-7.avif
-      alt: Random Image 7
-    - src: /hero/random-8.avif
-      alt: Random Image 8
-    - src: /hero/random-9.avif
-      alt: Random Image 9
-about:
-  title: "About Me"
-  description: |
-    As a UX/UI designer and front-end developer with 6 years of experience, I leverage my Boston University Interactive Design degree to craft user-centered digital experiences.
-    My approach blends creative strategy with technical expertise, transforming concepts into functional, purposeful digital products that seamlessly integrate design and technology.
-experience:
-  title: Work Experience
-  items:
-    - position: "Brand Designer at"
-      date: "2023 - Present"
-      company:
-        name: Nuxt
-        logo: "i-simple-icons-nuxtdotjs"
-        url: "https://nuxt.com"
-        color: "#00DC82"
-    - position: "Assets Designer at"
-      date: "2022 - 2023"
-      company:
-        name: Raycast
-        logo: "i-simple-icons-raycast"
-        url: "https://raycast.com"
-        color: "#FF6363"
-    - position: "Senior UX/UI Designer at"
-      date: "2020 - 2021"
-      company:
-        name: Linear
-        logo: "i-simple-icons-linear"
-        url: "https://linear.app"
-        color: "#5E6AD2"
+      alt: Student success
+howItWorks:
+  title: "How It Works"
+  description: "Getting started with Mentora is simple. Follow these easy steps to connect with your ideal teacher."
+  steps:
+    - title: "Create Your Account"
+      description: "Sign up for free and create your student profile. Tell us about your learning goals and interests."
+      icon: "i-lucide-user-plus"
+    - title: "Browse Teachers"
+      description: "Explore our diverse community of expert teachers. Filter by subject, language, or teaching style."
+      icon: "i-lucide-search"
+    - title: "Book a Class"
+      description: "Schedule a one-on-one video session at a time that works for you. Choose from 30, 60, or 90-minute sessions."
+      icon: "i-lucide-calendar"
+    - title: "Start Learning"
+      description: "Join your video class and begin your personalized learning journey with your chosen teacher."
+      icon: "i-lucide-video"
+teachers:
+  title: "Meet Our Teachers"
+  description: "Our community features experienced educators from around the world, ready to help you achieve your learning goals."
+  mentors:
+    - name: "Dr. Sarah Chen"
+      role: "Mathematics & Physics Teacher"
+      description: "With over 15 years of experience teaching mathematics and physics, Dr. Chen specializes in making complex concepts accessible and engaging for students of all levels."
+      avatar:
+        src: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        srcset: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=512&h=512&q=80 2x"
+      specialties:
+        - "Calculus"
+        - "Algebra"
+        - "Physics"
+        - "Test Prep"
+    - name: "James Rodriguez"
+      role: "Language & Literature Teacher"
+      description: "A passionate educator with expertise in English, Spanish, and creative writing. James helps students improve their language skills through interactive and engaging methods."
+      avatar:
+        src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        srcset: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=512&h=512&q=80 2x"
+      specialties:
+        - "English"
+        - "Spanish"
+        - "Creative Writing"
+        - "ESL"
+    - name: "Dr. Aisha Johnson"
+      role: "Science & Biology Teacher"
+      description: "An award-winning biology teacher with a PhD in Molecular Biology. Dr. Johnson brings real-world research experience to her online classes, making science come alive."
+      avatar:
+        src: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        srcset: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=512&h=512&q=80 2x"
+      specialties:
+        - "Biology"
+        - "Chemistry"
+        - "AP Science"
+        - "Research Methods"
+    - name: "Michael Park"
+      role: "Computer Science & Programming Teacher"
+      description: "A software engineer turned educator, Michael teaches programming languages and computer science concepts to students from beginner to advanced levels."
+      avatar:
+        src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        srcset: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=512&h=512&q=80 2x"
+      specialties:
+        - "Python"
+        - "JavaScript"
+        - "Web Development"
+        - "Data Structures"
 testimonials:
-  - quote: "Emma's approach to UX design completely transformed our product. She has a rare ability to balance beautiful aesthetics with functional simplicity. The redesign not only looked better, but it reduced our customer support tickets by 40% and increased conversion rates across all key metrics."
+  - quote: "Mentora completely transformed my learning experience. I found an amazing math teacher who helped me understand calculus in ways my school teacher never could. The one-on-one sessions made all the difference, and I went from struggling to excelling in just a few months."
     author:
-      name: 'Sarah Chen'
-      description: 'Product Director at Bloom Finance'
+      name: "Emma Thompson"
+      description: "High School Student"
       avatar:
-        src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-  - quote: "Working with Emma was the best decision we made for our startup. She didn't just deliver designs—she challenged our assumptions, conducted thorough user research, and created an experience that truly resonated with our audience. Her technical knowledge of front-end development meant the handoff to our engineering team was seamless."
+        src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80"
+        srcset: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x"
+  - quote: "As a working professional, I needed flexible learning options. Mentora allowed me to schedule Spanish classes around my busy schedule. My teacher was patient, professional, and helped me achieve fluency faster than I ever imagined possible."
     author:
-      name: 'Michael Rodriguez'
-      description: 'Co-founder of Wavelength Music'
+      name: "David Martinez"
+      description: "Marketing Professional"
       avatar:
-        src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-  - quote: "Emma stands out in her ability to translate complex sustainability data into intuitive interfaces. Her work on EcoTrack wasn't just visually stunning—it fundamentally changed how our users interact with environmental information. She approaches each problem with both creativity and analytical rigor, which is exactly what we needed."
+        src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80"
+        srcset: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x"
+  - quote: "Teaching on Mentora has been incredibly rewarding. The platform makes it easy to connect with motivated students, and I love the flexibility of setting my own schedule. The video quality is excellent, and I can provide personalized attention to each student."
     author:
-      name: 'Dr. Aisha Johnson'
-      description: 'Chief Innovation Officer at GreenTech Solutions'
+      name: "Dr. Sarah Chen"
+      description: "Mathematics Teacher"
       avatar:
-        src: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-blog:
-  title: "Latest Articles"
-  description: "Some of my recent thoughts"
+        src: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80"
+        srcset: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x"
 faq:
-  title: Frequently Asked Questions
-  description: Answers to common questions about my process and services.
+  title: "Frequently Asked Questions"
+  description: "Everything you need to know about learning and teaching on Mentora."
   categories:
-    - title: Services & Process
+    - title: "Getting Started"
       questions:
-        - label: What services do you offer?
+        - label: "How do I sign up for Mentora?"
           content: |
-            I specialize in UX/UI design and front-end development. This includes user research, wireframing, interactive prototyping, creating intuitive user interfaces, building responsive websites and web applications (especially with Vue.js/Nuxt.js), and developing design systems. My goal is to create seamless digital experiences from concept to deployment.
-        - label: What is your design process like?
+            Signing up is free and easy! Simply click the "Find a Teacher" button on our homepage, create your account with your email address, and complete your student profile. You can start browsing teachers immediately after signing up.
+        - label: "Do I need any special equipment?"
           content: |
-            My process is collaborative and iterative, typically involving stages like Discovery & Research, Ideation & Prototyping, User Testing, Visual Design, and close collaboration with development teams during implementation. I tailor the process based on project needs, always focusing on user-centered solutions.
-        - label: Do you work with startups?
+            All you need is a device with a camera and microphone (laptop, tablet, or smartphone), a stable internet connection, and a quiet space for your classes. We recommend using headphones for the best audio quality.
+        - label: "How do I choose the right teacher?"
           content: |
-            Absolutely! I enjoy working with startups to help shape their product vision and create user-friendly interfaces from the ground up. I can adapt my process to fit the fast-paced startup environment.
-    - title: Pricing & Timelines
+            You can browse teachers by subject, language, availability, and teaching style. Each teacher profile includes their qualifications, specialties, reviews from other students, and sample videos. You can also book a trial session to see if it's a good fit.
+    - title: "Classes & Scheduling"
       questions:
-        - label: How much does a project typically cost?
+        - label: "How long are the classes?"
           content: |
-            Project costs vary based on scope, complexity, features, and timeline. For comprehensive UX/UI design and front-end development projects, my engagements typically start around $5,000, with average projects ranging between $8,000 and $25,000. For consulting or specific design tasks, my day rate is $700.
-        - label: What are your payment terms?
+            Classes are available in 30, 60, or 90-minute sessions. You can choose the duration that works best for you when booking a class. Most students find 60-minute sessions ideal for comprehensive learning.
+        - label: "Can I reschedule or cancel a class?"
           content: |
-            I generally require a 40% deposit to schedule the project and begin work, with the remaining 60% due upon successful project completion and delivery. I accept payments via bank transfer and Stripe.
-        - label: How long does a typical project take?
+            Yes! You can reschedule or cancel classes up to 24 hours before the scheduled time through your dashboard. Cancellations made within 24 hours may be subject to our cancellation policy.
+        - label: "What time zones do teachers work in?"
           content: |
-            Timelines depend heavily on the project's scope and complexity. Smaller projects might take 3-4 weeks, while larger, more involved projects can range from 2 to 4 months. I always provide a detailed timeline estimate after the initial discovery phase.
-        - label: Do you offer retainers or ongoing support?
-          content: |
-            Yes, for clients needing ongoing design support, feature development, or maintenance, I offer monthly retainer options tailored to specific needs. Let's discuss if this is something you're interested in.
-    - title: About Me
+            Our teachers are located around the world, so you can find classes at almost any time of day. Each teacher's profile shows their local time zone and availability, making it easy to find a schedule that works for you.
+    - title: "Pricing & Payment"
       questions:
-        - label: What do you enjoy most about your work?
+        - label: "How much do classes cost?"
           content: |
-            I love the challenge of solving complex problems through design and technology. It's incredibly rewarding to see people interact with something I've created and find it genuinely useful and easy to navigate. Bridging the gap between user needs and technical possibilities is what truly excites me.
-        - label: What are your hobbies outside of work?
+            Class prices vary by teacher and subject, typically ranging from $25 to $75 per hour. Each teacher sets their own rates based on their experience and expertise. You can see pricing on each teacher's profile before booking.
+        - label: "What payment methods do you accept?"
           content: |
-            When I'm not designing or coding, I enjoy exploring Boston's neighborhoods, trying out new coffee shops, and hiking in the nearby reservations. I'm also passionate about photography and occasionally contribute to open-source projects.
+            We accept all major credit cards, debit cards, and PayPal. Payments are processed securely through our platform, and you'll only be charged after your class is completed.
+        - label: "Are there any subscription plans?"
+          content: |
+            Yes! We offer monthly subscription plans that provide discounts for students who book multiple classes per month. Subscriptions can be canceled or modified at any time.
+    - title: "For Teachers"
+      questions:
+        - label: "How do I become a teacher on Mentora?"
+          content: |
+            Click "Become a Teacher" on our homepage and complete the application form. We'll review your qualifications and teaching experience. Once approved, you can create your profile and start accepting students.
+        - label: "How do I get paid?"
+          content: |
+            Teachers receive payments directly to their bank account or PayPal. Payments are processed weekly, and you can track your earnings in your teacher dashboard. Mentora takes a small platform fee to cover payment processing and platform maintenance.
+        - label: "Can I set my own schedule?"
+          content: |
+            Absolutely! As a teacher, you have complete control over your availability. You can set your working hours, time zones, and block out times when you're not available. Students can only book classes during your available hours.
+cta:
+  title: "Ready to Start Learning?"
+  description: "Join thousands of students who are already learning with expert teachers on Mentora. Find your perfect teacher today and take the first step toward achieving your learning goals."
+  links:
+    - label: "Find a Teacher"
+      to: "/teachers"
+      color: "primary"
+    - label: "Become a Teacher"
+      to: "/teach"
+      color: "neutral"
+      variant: "outline"

@@ -17,7 +17,8 @@ const createButtonSchema = () => z.object({
 
 const createImageSchema = () => z.object({
   src: z.string().editor({ input: 'media' }),
-  alt: z.string()
+  alt: z.string(),
+  srcset: z.string().optional()
 })
 
 const createAuthorSchema = () => z.object({
@@ -26,7 +27,10 @@ const createAuthorSchema = () => z.object({
   username: z.string().optional(),
   twitter: z.string().optional(),
   to: z.string().optional(),
-  avatar: createImageSchema().optional()
+  avatar: z.object({
+    src: z.string(),
+    srcset: z.string().optional()
+  }).optional()
 })
 
 const createTestimonialSchema = () => z.object({
@@ -44,32 +48,40 @@ export default defineContentConfig({
           links: z.array(createButtonSchema()),
           images: z.array(createImageSchema())
         }),
-        about: createBaseSchema(),
-        experience: createBaseSchema().extend({
-          items: z.array(z.object({
-            date: z.date(),
-            position: z.string(),
-            company: z.object({
-              name: z.string(),
-              url: z.string(),
-              logo: z.string().editor({ input: 'icon' }),
-              color: z.string()
-            })
+        howItWorks: createBaseSchema().extend({
+          steps: z.array(z.object({
+            title: z.string(),
+            description: z.string(),
+            icon: z.string()
+          }))
+        }),
+        teachers: createBaseSchema().extend({
+          mentors: z.array(z.object({
+            name: z.string(),
+            role: z.string(),
+            description: z.string(),
+            avatar: z.object({
+              src: z.string(),
+              srcset: z.string().optional()
+            }),
+            specialties: z.array(z.string())
           }))
         }),
         testimonials: z.array(createTestimonialSchema()),
-        blog: createBaseSchema(),
         faq: createBaseSchema().extend({
           categories: z.array(
             z.object({
-              title: z.string().nonempty(),
+              title: z.string(),
               questions: z.array(
                 z.object({
-                  label: z.string().nonempty(),
-                  content: z.string().nonempty()
+                  label: z.string(),
+                  content: z.string()
                 })
               )
             }))
+        }),
+        cta: createBaseSchema().extend({
+          links: z.array(createButtonSchema())
         })
       })
     }),

@@ -16,6 +16,14 @@ export default defineNuxtConfig({
     enabled: true
   },
 
+  app: {
+    head: {
+      htmlAttrs: {
+        class: 'dark'
+      }
+    }
+  },
+
   css: ['~/assets/css/main.css'],
 
   compatibilityDate: '2024-11-01',
