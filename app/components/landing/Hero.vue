@@ -136,19 +136,38 @@ const avatars = [
           :transition="{ duration: 0.8, delay: 0.4 }"
           class="hidden lg:block"
         >
-          <div class="relative">
-            <!-- Video call frame with glassmorphism -->
-            <div class="p-2 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 shadow-2xl shadow-primary/20">
-              <div class="rounded-xl overflow-hidden">
-                <NuxtImg
-                  src="/teachers.png"
-                  alt="Expert Teachers"
-                  width="600"
-                  height="450"
-                  class="w-full h-auto object-cover"
-                />
-              </div>
-            </div>
+          <!-- Video call frame with glassmorphism -->
+          <div class="p-2 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 shadow-2xl shadow-primary/20">
+            <VideoReveal
+              src="/hero-video-bg.mp4"
+              contained
+              class="rounded-xl"
+            >
+              <template #trigger>
+                <button
+                  type="button"
+                  class="relative cursor-pointer group block w-full text-left rounded-xl overflow-hidden"
+                  aria-label="Play video"
+                >
+                  <NuxtImg
+                    src="/teachers.png"
+                    alt="Expert Teachers"
+                    width="600"
+                    height="450"
+                    class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <!-- Play button overlay -->
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="play-button">
+                      <UIcon
+                        name="i-lucide-play"
+                        class="w-8 h-8 ml-1 text-white"
+                      />
+                    </div>
+                  </div>
+                </button>
+              </template>
+            </VideoReveal>
           </div>
         </Motion>
       </div>
@@ -232,3 +251,44 @@ const avatars = [
     </div>
   </section>
 </template>
+
+<style scoped>
+.play-button {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(246, 81, 47, 0.9) 0%, rgba(231, 20, 7, 0.9) 100%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 0 rgba(246, 81, 47, 0.4),
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.group:hover .play-button {
+  transform: scale(1.15);
+  box-shadow:
+    0 0 0 12px rgba(246, 81, 47, 0.15),
+    0 12px 40px rgba(246, 81, 47, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 0 rgba(246, 81, 47, 0.4),
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 0 8px rgba(246, 81, 47, 0.1),
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+</style>
