@@ -40,7 +40,7 @@ const avatars = [
     <LandingHeroVideoBackground />
 
     <!-- Main Content -->
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-16 lg:pt-0 lg:min-h-screen lg:flex lg:flex-col lg:justify-center">
+    <div class="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 pt-16 lg:pt-0 lg:min-h-screen lg:flex lg:flex-col lg:justify-center">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <!-- Left Column - Text Content -->
         <div class="flex flex-col gap-6">

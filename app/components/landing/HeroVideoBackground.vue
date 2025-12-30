@@ -153,6 +153,8 @@ const triggerCrossfade = async (nextVideo: HTMLVideoElement) => {
 
       <!-- Dark overlay -->
       <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-10" />
+      <!-- hide watermark -->
+      <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t z-20 from-neutral-950 to-transparent h-52 lg:h-96" />
     </Motion>
   </div>
 </template>
