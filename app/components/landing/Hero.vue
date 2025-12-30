@@ -36,37 +36,8 @@ const avatars = [
 
 <template>
   <section class="relative min-h-[90vh] lg:min-h-screen overflow-hidden">
-    <!-- Background Blobs -->
-    <div class="absolute inset-0 pointer-events-none overflow-visible">
-      <Motion
-        :initial="{ opacity: 0, scale: 0.3, x: '-50%', y: '-50%' }"
-        :animate="{ opacity: 1, scale: 1, x: '0%', y: '0%' }"
-        :transition="{ duration: 0.6, delay: 0.1, ease: 'easeInOut' }"
-        class="absolute top-0 left-0 origin-top-left"
-      >
-        <NuxtImg
-          src="/blob-top-left.png"
-          alt=""
-          class="hidden md:block lg:w-[500px] lg:h-[500px] w-[300px] h-[300px] object-contain"
-          width="500"
-          height="500"
-        />
-      </Motion>
-      <Motion
-        :initial="{ opacity: 0, scale: 0.3, x: '50%', y: '-50%' }"
-        :animate="{ opacity: 1, scale: 1, x: '0%', y: '0%' }"
-        :transition="{ duration: 0.6, delay: 0.2, ease: 'easeInOut' }"
-        class="absolute top-0 right-0 origin-top-right"
-      >
-        <NuxtImg
-          src="/blob-top-right.png"
-          alt=""
-          class="w-[400px] h-[400px] object-contain"
-          width="400"
-          height="400"
-        />
-      </Motion>
-    </div>
+    <!-- Video Background -->
+    <LandingHeroVideoBackground />
 
     <!-- Main Content -->
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-16 lg:pt-0 lg:min-h-screen lg:flex lg:flex-col lg:justify-center">
