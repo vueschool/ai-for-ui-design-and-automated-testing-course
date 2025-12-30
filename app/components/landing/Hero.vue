@@ -47,9 +47,9 @@ const avatars = [
         <NuxtImg
           src="/blob-top-left.png"
           alt=""
-          class="hidden md:block lg:w-[700px] lg:h-[700px] w-[500px] h-[500px] object-contain"
-          width="700"
-          height="700"
+          class="hidden md:block lg:w-[500px] lg:h-[500px] w-[300px] h-[300px] object-contain"
+          width="500"
+          height="500"
         />
       </Motion>
       <Motion
@@ -61,9 +61,9 @@ const avatars = [
         <NuxtImg
           src="/blob-top-right.png"
           alt=""
-          class="w-[500px] h-[500px] object-contain"
-          width="500"
-          height="500"
+          class="w-[400px] h-[400px] object-contain"
+          width="400"
+          height="400"
         />
       </Motion>
     </div>
