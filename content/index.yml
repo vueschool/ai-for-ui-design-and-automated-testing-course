@@ -25,19 +25,16 @@ hero:
       alt: Student success
 howItWorks:
   title: "How It Works"
-  description: "Getting started with Mentora is simple. Follow these easy steps to connect with your ideal teacher."
+  description: "Simple steps to start your learning journey."
   steps:
-    - title: "Create Your Account"
-      description: "Sign up for free and create your student profile. Tell us about your learning goals and interests."
-      icon: "i-lucide-user-plus"
-    - title: "Browse Teachers"
-      description: "Explore our diverse community of expert teachers. Filter by subject, language, or teaching style."
+    - title: "Find Your Expert"
+      description: "Browse profiles of verified tutors. Filter by subject, price, and reviews to find your perfect match."
       icon: "i-lucide-search"
-    - title: "Book a Class"
-      description: "Schedule a one-on-one video session at a time that works for you. Choose from 30, 60, or 90-minute sessions."
+    - title: "Book a Session"
+      description: "Choose a time that works for you. Our integrated calendar makes scheduling effortless."
       icon: "i-lucide-calendar"
-    - title: "Start Learning"
-      description: "Join your video class and begin your personalized learning journey with your chosen teacher."
+    - title: "Learn via Video"
+      description: "Connect instantly with high-quality video calls. Screen sharing and whiteboard tools included."
       icon: "i-lucide-video"
 teachers:
   title: "Meet Our Teachers"
