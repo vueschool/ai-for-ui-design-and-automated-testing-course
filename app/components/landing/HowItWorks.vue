@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Motion } from 'motion-v'
 import type { IndexCollectionItem } from '@nuxt/content'
 
 const props = defineProps<{
@@ -20,7 +21,13 @@ const steps = computed(() => {
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <!-- Left Column - Teacher Image -->
-        <div class="relative order-1 lg:order-1">
+        <Motion
+          :initial="{ opacity: 0, x: -30 }"
+          :in-view="{ opacity: 1, x: 0 }"
+          :transition="{ duration: 0.6, ease: 'easeOut' }"
+          :in-view-options="{ once: true, amount: 0.3 }"
+          class="relative order-1 lg:order-1"
+        >
           <!-- Teacher Image Container -->
           <div class="relative w-full overflow-hidden pb-20">
             <NuxtImg
@@ -52,22 +59,42 @@ const steps = computed(() => {
               </div>
             </UCard>
           </div>
-        </div>
+        </Motion>
 
         <!-- Right Column - Text Content -->
         <div class="relative z-10 order-2 lg:order-2">
           <!-- Heading -->
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            {{ page.howItWorks.title }}
-          </h2>
+          <Motion
+            :initial="{ opacity: 0, y: 20 }"
+            :in-view="{ opacity: 1, y: 0 }"
+            :transition="{ duration: 0.5, ease: 'easeOut' }"
+            :in-view-options="{ once: true, amount: 0.5 }"
+          >
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+              {{ page.howItWorks.title }}
+            </h2>
+          </Motion>
 
           <!-- Subtitle -->
-          <p class="text-lg text-[#CCCCCC] mb-12">
-            {{ page.howItWorks.description }}
-          </p>
+          <Motion
+            :initial="{ opacity: 0, y: 20 }"
+            :in-view="{ opacity: 1, y: 0 }"
+            :transition="{ duration: 0.5, ease: 'easeOut', delay: 0.1 }"
+            :in-view-options="{ once: true, amount: 0.5 }"
+          >
+            <p class="text-lg text-[#CCCCCC] mb-12">
+              {{ page.howItWorks.description }}
+            </p>
+          </Motion>
 
           <!-- Steps using UStepper -->
-          <div class="mb-10">
+          <Motion
+            :initial="{ opacity: 0, y: 20 }"
+            :in-view="{ opacity: 1, y: 0 }"
+            :transition="{ duration: 0.5, ease: 'easeOut', delay: 0.2 }"
+            :in-view-options="{ once: true, amount: 0.3 }"
+            class="mb-10"
+          >
             <UStepper
               :items="steps"
               orientation="vertical"
@@ -81,18 +108,25 @@ const steps = computed(() => {
                 description: 'text-[#CCCCCC] leading-relaxed text-base'
               }"
             />
-          </div>
+          </Motion>
 
           <!-- CTA Button -->
-          <UButton
-            size="xl"
-            color="primary"
-            variant="solid"
-            trailing-icon="i-lucide-arrow-right"
-            class="px-8 py-4 text-lg font-medium rounded-lg gradient-primary-glow hover:shadow-[0_0_25px_rgba(246,81,47,0.5)] transition-all"
+          <Motion
+            :initial="{ opacity: 0, y: 20 }"
+            :in-view="{ opacity: 1, y: 0 }"
+            :transition="{ duration: 0.5, ease: 'easeOut', delay: 0.3 }"
+            :in-view-options="{ once: true, amount: 0.5 }"
           >
-            Start Learning Today
-          </UButton>
+            <UButton
+              size="xl"
+              color="primary"
+              variant="solid"
+              trailing-icon="i-lucide-arrow-right"
+              class="px-8 py-4 text-lg font-medium rounded-lg gradient-primary-glow hover:shadow-[0_0_25px_rgba(246,81,47,0.5)] transition-all"
+            >
+              Start Learning Today
+            </UButton>
+          </Motion>
         </div>
       </div>
     </div>

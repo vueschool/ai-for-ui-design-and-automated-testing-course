@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Motion } from 'motion-v'
 import type { IndexCollectionItem } from '@nuxt/content'
 
 defineProps<{
@@ -22,18 +23,36 @@ const getBlobForTeacher = (index: number) => {
   <section class="relative py-20 lg:py-32 overflow-hidden">
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
       <div class="mb-12">
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-          {{ page.teachers.title }}
-        </h2>
-        <p class="text-lg text-[#CCCCCC]">
-          {{ page.teachers.description }}
-        </p>
+        <Motion
+          :initial="{ opacity: 0, y: 20 }"
+          :in-view="{ opacity: 1, y: 0 }"
+          :transition="{ duration: 0.5, ease: 'easeOut' }"
+          :in-view-options="{ once: true, amount: 0.5 }"
+        >
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+            {{ page.teachers.title }}
+          </h2>
+        </Motion>
+        <Motion
+          :initial="{ opacity: 0, y: 20 }"
+          :in-view="{ opacity: 1, y: 0 }"
+          :transition="{ duration: 0.5, ease: 'easeOut', delay: 0.1 }"
+          :in-view-options="{ once: true, amount: 0.5 }"
+        >
+          <p class="text-lg text-[#CCCCCC]">
+            {{ page.teachers.description }}
+          </p>
+        </Motion>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div
+        <Motion
           v-for="(mentor, index) in page.teachers.mentors"
           :key="index"
+          :initial="{ opacity: 0, y: 30 }"
+          :in-view="{ opacity: 1, y: 0 }"
+          :transition="{ duration: 0.5, ease: 'easeOut', delay: index * 0.1 }"
+          :in-view-options="{ once: true, amount: 0.2 }"
           class="group relative flex flex-col items-center p-6 rounded-3xl glass transition-all duration-300 hover:-translate-y-1 hover:bg-white/2"
         >
           <!-- Gradient Border via pseudo-element -->
@@ -84,7 +103,7 @@ const getBlobForTeacher = (index: number) => {
               </span>
             </div>
           </div>
-        </div>
+        </Motion>
       </div>
     </div>
   </section>

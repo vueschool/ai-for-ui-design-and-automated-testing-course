@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Motion } from 'motion-v'
 import type { IndexCollectionItem } from '@nuxt/content'
 
 const props = defineProps<{
@@ -28,40 +29,61 @@ const ui = {
   <section class="relative py-20 lg:py-32 overflow-hidden">
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
       <div class="mb-12">
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-          {{ page.faq.title }}
-        </h2>
-        <p class="text-lg text-[#CCCCCC]">
-          {{ page.faq.description }}
-        </p>
+        <Motion
+          :initial="{ opacity: 0, y: 20 }"
+          :in-view="{ opacity: 1, y: 0 }"
+          :transition="{ duration: 0.5, ease: 'easeOut' }"
+          :in-view-options="{ once: true, amount: 0.5 }"
+        >
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+            {{ page.faq.title }}
+          </h2>
+        </Motion>
+        <Motion
+          :initial="{ opacity: 0, y: 20 }"
+          :in-view="{ opacity: 1, y: 0 }"
+          :transition="{ duration: 0.5, ease: 'easeOut', delay: 0.1 }"
+          :in-view-options="{ once: true, amount: 0.5 }"
+        >
+          <p class="text-lg text-[#CCCCCC]">
+            {{ page.faq.description }}
+          </p>
+        </Motion>
       </div>
 
-      <UTabs
-        :items
-        orientation="horizontal"
-        :ui
+      <Motion
+        :initial="{ opacity: 0, y: 20 }"
+        :in-view="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 0.5, ease: 'easeOut', delay: 0.2 }"
+        :in-view-options="{ once: true, amount: 0.2 }"
       >
-        <template #content="{ item }">
-          <UAccordion
-            trailing-icon="lucide:plus"
-            :items="item.questions"
-            :unmount-on-hide="false"
-            :ui="{
-              item: 'border-none',
-              trigger: 'mb-2 border-0 group px-4 transform-gpu rounded-lg bg-elevated/60 will-change-transform hover:bg-muted/50 text-base',
-              trailingIcon: 'group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-135 text-base text-muted'
-            }"
-          >
-            <template #body="{ item: _item }">
-              <MDC
-                :value="_item.content"
-                unwrap="p"
-                class="px-4"
-              />
-            </template>
-          </UAccordion>
-        </template>
-      </UTabs>
+        <UTabs
+          :items
+          orientation="horizontal"
+          :ui
+        >
+          <template #content="{ item }">
+            <UAccordion
+              trailing-icon="lucide:plus"
+              :items="item.questions"
+              :unmount-on-hide="false"
+              :ui="{
+                item: 'border-none',
+                trigger: 'mb-2 border-0 group px-4 transform-gpu rounded-lg bg-elevated/60 will-change-transform hover:bg-muted/50 text-base',
+                trailingIcon: 'group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-135 text-base text-muted'
+              }"
+            >
+              <template #body="{ item: _item }">
+                <MDC
+                  :value="_item.content"
+                  unwrap="p"
+                  class="px-4"
+                />
+              </template>
+            </UAccordion>
+          </template>
+        </UTabs>
+      </Motion>
     </div>
   </section>
 </template>

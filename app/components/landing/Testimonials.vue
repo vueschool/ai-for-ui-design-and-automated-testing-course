@@ -49,12 +49,19 @@ onUnmounted(() => {
 })
 
 const splitQuote = (quote: string) => {
-  return quote.split(" ")
+  return quote.split(' ')
 }
 </script>
 
 <template>
-  <div v-if="testimonials.length" class="max-w-sm md:max-w-4xl mx-auto px-4 md:px-8 lg:px-12 py-20">
+  <Motion
+    v-if="testimonials.length"
+    :initial="{ opacity: 0, y: 30 }"
+    :in-view="{ opacity: 1, y: 0 }"
+    :transition="{ duration: 0.6, ease: 'easeOut' }"
+    :in-view-options="{ once: true, amount: 0.2 }"
+    class="max-w-sm md:max-w-4xl mx-auto px-4 md:px-8 lg:px-12 py-20"
+  >
     <div class="relative grid grid-cols-1 md:grid-cols-2 gap-20">
       <div>
         <div class="relative h-80 w-full">
@@ -66,7 +73,7 @@ const splitQuote = (quote: string) => {
                 opacity: 0,
                 scale: 0.9,
                 z: -100,
-                rotate: testimonial.rotation,
+                rotate: testimonial.rotation
               }"
               :animate="{
                 opacity: isActive(index) ? 1 : 0.7,
@@ -76,17 +83,17 @@ const splitQuote = (quote: string) => {
                 zIndex: isActive(index)
                   ? 999
                   : testimonials.length + 2 - index,
-                y: isActive(index) ? [0, -80, 0] : 0,
+                y: isActive(index) ? [0, -80, 0] : 0
               }"
               :exit="{
                 opacity: 0,
                 scale: 0.9,
                 z: 100,
-                rotate: testimonial.rotation,
+                rotate: testimonial.rotation
               }"
               :transition="{
                 duration: 0.4,
-                ease: 'easeInOut',
+                ease: 'easeInOut'
               }"
               class="absolute inset-0 origin-bottom"
             >
@@ -107,19 +114,19 @@ const splitQuote = (quote: string) => {
             :key="active"
             :initial="{
               y: 20,
-              opacity: 0,
+              opacity: 0
             }"
             :animate="{
               y: 0,
-              opacity: 1,
+              opacity: 1
             }"
             :exit="{
               y: -20,
-              opacity: 0,
+              opacity: 0
             }"
             :transition="{
               duration: 0.2,
-              ease: 'easeInOut',
+              ease: 'easeInOut'
             }"
           >
             <h3 class="text-2xl font-bold text-[var(--ui-text)] dark:text-white">
@@ -136,17 +143,17 @@ const splitQuote = (quote: string) => {
                 :initial="{
                   filter: 'blur(10px)',
                   opacity: 0,
-                  y: 5,
+                  y: 5
                 }"
                 :animate="{
                   filter: 'blur(0px)',
                   opacity: 1,
-                  y: 0,
+                  y: 0
                 }"
                 :transition="{
                   duration: 0.2,
                   ease: 'easeInOut',
-                  delay: 0.02 * index,
+                  delay: 0.02 * index
                 }"
                 class="inline-block"
               >
@@ -157,8 +164,8 @@ const splitQuote = (quote: string) => {
         </AnimatePresence>
         <div class="flex gap-4">
           <button
-            @click="handlePrev"
             class="h-7 w-7 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center group/button hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            @click="handlePrev"
           >
             <UIcon
               name="i-lucide-arrow-left"
@@ -166,8 +173,8 @@ const splitQuote = (quote: string) => {
             />
           </button>
           <button
-            @click="handleNext"
             class="h-7 w-7 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center group/button hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            @click="handleNext"
           >
             <UIcon
               name="i-lucide-arrow-right"
@@ -177,5 +184,5 @@ const splitQuote = (quote: string) => {
         </div>
       </div>
     </div>
-  </div>
+  </Motion>
 </template>
