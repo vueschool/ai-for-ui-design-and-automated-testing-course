@@ -6,10 +6,10 @@ description: "Connect with experienced educators through personalized online vid
 hero:
   links:
     - label: "Find a Teacher"
-      to: "/teachers"
+      to: "/"
       color: "primary"
     - label: "Become a Teacher"
-      to: "/teach"
+      to: "/"
       color: "neutral"
       variant: "outline"
   images:
@@ -159,9 +159,9 @@ cta:
   description: "Join thousands of students who are already learning with expert teachers on Mentora. Find your perfect teacher today and take the first step toward achieving your learning goals."
   links:
     - label: "Find a Teacher"
-      to: "/teachers"
+      to: "/"
       color: "primary"
     - label: "Become a Teacher"
-      to: "/teach"
+      to: "/"
       color: "neutral"
       variant: "outline"
