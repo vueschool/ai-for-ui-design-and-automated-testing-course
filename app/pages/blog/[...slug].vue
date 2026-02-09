@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import type { ContentNavigationItem } from '@nuxt/content'
-import { mapContentNavigation } from '@nuxt/ui/utils/content'
-import { findPageBreadcrumb } from '@nuxt/content/utils'
-
 const route = useRoute()
 
 const { data: page } = await useAsyncData(route.path, () =>
@@ -14,21 +10,6 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () =>
     fields: ['description']
   })
 )
-
-const navigation = inject<Ref<ContentNavigationItem[]>>('navigation', ref([]))
-const blogNavigation = computed(() => navigation.value.find(item => item.path === '/blog')?.children || [])
-
-const breadcrumb = computed(() => mapContentNavigation(findPageBreadcrumb(blogNavigation?.value, page.value?.path)).map(({ icon, ...link }) => link))
-
-if (page.value.image) {
-  defineOgImage({ url: page.value.image })
-} else {
-  defineOgImageComponent('Blog', {
-    headline: breadcrumb.value.map(item => item.label).join(' > ')
-  }, {
-    fonts: ['Geist:400', 'Geist:600']
-  })
-}
 
 const title = page.value?.seo?.title || page.value?.title
 const description = page.value?.seo?.description || page.value?.description
@@ -53,7 +34,7 @@ const formatDate = (dateString: string) => {
 
 <template>
   <UMain class="mt-20 px-2">
-    <UContainer class="relative min-h-screen">
+    <div class="relative min-h-screen max-w-7xl mx-auto px-6 lg:px-8">
       <UPage v-if="page">
         <ULink
           to="/blog"
@@ -74,12 +55,11 @@ const formatDate = (dateString: string) => {
               {{ page.minRead }} MIN READ
             </span>
           </div>
-          <NuxtImg
-            :src="page.image"
+          <BlogPostImage
+            :src="`${page.path}-long.png`"
             :alt="page.title"
-            class="rounded-lg w-full h-[300px] object-cover object-center"
           />
-          <h1 class="text-4xl text-center font-medium max-w-3xl mx-auto mt-4">
+          <h1 class="text-2xl md:text-4xl text-center font-medium max-w-3xl mx-auto mt-4">
             {{ page.title }}
           </h1>
           <p class="text-muted text-center max-w-2xl mx-auto">
@@ -113,6 +93,6 @@ const formatDate = (dateString: string) => {
           <UContentSurround :surround />
         </UPageBody>
       </UPage>
-    </UContainer>
+    </div>
   </UMain>
 </template>
