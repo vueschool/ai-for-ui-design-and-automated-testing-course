@@ -27,4 +27,3 @@ Move the resulting image to `/public/blog/[post-slug]-og.png` only if the file p
 
 Check the generated image for quality (spelling issues, too busy, unrelated to the post, etc.) and if it is not good enough, generate again with adjustments to the prompt as required.
 
-Update the related blog post markdown file with the new image path.
