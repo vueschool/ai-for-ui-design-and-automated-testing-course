@@ -14,8 +14,8 @@
 #                              (required)
 #   -k, --api-key KEY          Google Gemini API key
 #                              (required, or set GEMINI_API_KEY env var)
-#   -i, --input-image FILE     Input image file to use as reference
-#                              (optional)
+#   -i, --input-image FILE     Input image file(s) to use as reference
+#                              (optional; may be repeated for multiple images)
 #   -o, --output FILE          Output filename for the generated image
 #                              (default: generated_image.png)
 #   -a, --aspect-ratio RATIO   Aspect ratio: 1:1, 2:3, 3:2, 3:4, 4:3, 4:5,
@@ -42,6 +42,9 @@
 #   # With input image reference
 #   ./generate-image.sh -p "Extract the blob" -i hero.png -o blob.png
 #
+#   # With multiple input images
+#   ./generate-image.sh -p "Combine these" -i a.png -i b.png -o combined.png
+#
 # NOTES:
 #   - All generated images include a SynthID watermark
 #   - The API endpoint used is: gemini-3-pro-image-preview
@@ -59,7 +62,7 @@ set -euo pipefail
 # Default values
 PROMPT=""
 API_KEY="${GEMINI_API_KEY:-}"
-INPUT_IMAGE=""
+INPUT_IMAGES=()
 OUTPUT_FILE="generated_image.png"
 ASPECT_RATIO="1:1"
 IMAGE_SIZE="1K"
@@ -98,6 +101,17 @@ validate_size() {
     return 1
 }
 
+# Function to get MIME type from filename extension
+get_mime_type() {
+    local ext
+    ext=$(echo "${1##*.}" | tr '[:upper:]' '[:lower:]')
+    case "$ext" in
+        png) echo "image/png" ;;
+        jpg|jpeg) echo "image/jpeg" ;;
+        *) echo "image/png" ;;
+    esac
+}
+
 # Parse command-line arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -110,7 +124,7 @@ while [[ $# -gt 0 ]]; do
             shift 2
             ;;
         -i|--input-image)
-            INPUT_IMAGE="$2"
+            INPUT_IMAGES+=("$2")
             shift 2
             ;;
         -o|--output)
@@ -166,106 +180,64 @@ if ! command -v jq &> /dev/null; then
     exit 1
 fi
 
-# Validate input image if provided
-if [[ -n "$INPUT_IMAGE" ]]; then
-    if [[ ! -f "$INPUT_IMAGE" ]]; then
-        echo "Error: Input image file '$INPUT_IMAGE' does not exist." >&2
-        exit 1
-    fi
-    # Detect MIME type based on file extension
-    INPUT_IMAGE_EXT="${INPUT_IMAGE##*.}"
-    INPUT_IMAGE_EXT_LOWER=$(echo "$INPUT_IMAGE_EXT" | tr '[:upper:]' '[:lower:]')
-    case "$INPUT_IMAGE_EXT_LOWER" in
-        png)
-            INPUT_MIME_TYPE="image/png"
-            ;;
-        jpg|jpeg)
-            INPUT_MIME_TYPE="image/jpeg"
-            ;;
-        *)
-            echo "Warning: Unknown image format '$INPUT_IMAGE_EXT'. Assuming PNG." >&2
-            INPUT_MIME_TYPE="image/png"
-            ;;
-    esac
-    # Encode image to base64
-    if [[ "$(uname)" == "Darwin" ]]; then
-        INPUT_IMAGE_B64=$(base64 -i "$INPUT_IMAGE")
-    else
-        INPUT_IMAGE_B64=$(base64 -w 0 "$INPUT_IMAGE")
-    fi
+# Validate input images and build JSON array of parts (mimeType + data)
+TEMP_IMAGE_PARTS=""
+if [[ ${#INPUT_IMAGES[@]} -gt 0 ]]; then
+    TEMP_IMAGE_PARTS=$(mktemp)
+    for INPUT_IMAGE in "${INPUT_IMAGES[@]}"; do
+        if [[ ! -f "$INPUT_IMAGE" ]]; then
+            echo "Error: Input image file '$INPUT_IMAGE' does not exist." >&2
+            exit 1
+        fi
+    done
+    # Build JSON array of { mimeType, data } for each image
+    # API requires single-line base64 (no newlines); macOS base64 wraps by default
+    IMAGE_PARTS_JSON=$(for INPUT_IMAGE in "${INPUT_IMAGES[@]}"; do
+        MIME=$(get_mime_type "$INPUT_IMAGE")
+        if [[ "$(uname)" == "Darwin" ]]; then
+            base64 -i "$INPUT_IMAGE" | tr -d '\n'
+        else
+            base64 -w 0 "$INPUT_IMAGE"
+        fi | jq -Rs --arg mime "$MIME" '{mimeType: $mime, data: .}'
+    done | jq -s .)
+    echo -n "$IMAGE_PARTS_JSON" > "$TEMP_IMAGE_PARTS"
+else
+    TEMP_IMAGE_PARTS=$(mktemp)
+    echo "[]" > "$TEMP_IMAGE_PARTS"
 fi
 
 # Create temporary file for API response
 TEMP_RESPONSE=$(mktemp)
-trap "rm -f $TEMP_RESPONSE" EXIT
+trap "rm -f $TEMP_RESPONSE $TEMP_IMAGE_PARTS" EXIT
 
 echo "Generating image with prompt: $PROMPT"
-if [[ -n "$INPUT_IMAGE" ]]; then
-    echo "Using input image: $INPUT_IMAGE"
+if [[ ${#INPUT_IMAGES[@]} -gt 0 ]]; then
+    echo "Using input image(s): ${INPUT_IMAGES[*]}"
 fi
 echo "Aspect ratio: $ASPECT_RATIO, Size: $IMAGE_SIZE"
 echo "Sending request to Gemini API..."
 
-# Create temporary files for JSON payload
+# Create temporary file for JSON payload
 TEMP_JSON=$(mktemp)
-TEMP_PROMPT=$(mktemp)
-trap "rm -f $TEMP_RESPONSE $TEMP_JSON $TEMP_PROMPT" EXIT
+trap "rm -f $TEMP_RESPONSE $TEMP_JSON $TEMP_IMAGE_PARTS" EXIT
 
-# Escape prompt and write to temp file
-echo -n "$PROMPT" | jq -Rs . > "$TEMP_PROMPT"
-ESCAPED_PROMPT=$(cat "$TEMP_PROMPT")
-
-# Build JSON payload
-if [[ -n "$INPUT_IMAGE" ]]; then
-    # Write base64 data to temp file to avoid command-line length limits
-    TEMP_B64=$(mktemp)
-    echo -n "$INPUT_IMAGE_B64" > "$TEMP_B64"
-    trap "rm -f $TEMP_RESPONSE $TEMP_JSON $TEMP_PROMPT $TEMP_B64" EXIT
-
-    # Build JSON manually to avoid argument length limits
-    cat > "$TEMP_JSON" <<EOF
-{
-  "contents": [{
-    "parts": [
-      {
-        "inlineData": {
-          "mimeType": "$INPUT_MIME_TYPE",
-          "data": "$INPUT_IMAGE_B64"
+# Build JSON payload with jq (supports 0 or more input images)
+jq -n \
+    --slurpfile imgparts "$TEMP_IMAGE_PARTS" \
+    --arg prompt "$PROMPT" \
+    --arg ar "$ASPECT_RATIO" \
+    --arg sz "$IMAGE_SIZE" \
+    '{
+      contents: [{
+        parts: ([$imgparts[0][] | {inlineData: .}] + [{text: $prompt}])
+      }],
+      generationConfig: {
+        imageConfig: {
+          aspectRatio: $ar,
+          imageSize: $sz
         }
-      },
-      {
-        "text": $ESCAPED_PROMPT
       }
-    ]
-  }],
-  "generationConfig": {
-    "imageConfig": {
-      "aspectRatio": "$ASPECT_RATIO",
-      "imageSize": "$IMAGE_SIZE"
-    }
-  }
-}
-EOF
-else
-    # Build JSON without input image
-    cat > "$TEMP_JSON" <<EOF
-{
-  "contents": [{
-    "parts": [
-      {
-        "text": $ESCAPED_PROMPT
-      }
-    ]
-  }],
-  "generationConfig": {
-    "imageConfig": {
-      "aspectRatio": "$ASPECT_RATIO",
-      "imageSize": "$IMAGE_SIZE"
-    }
-  }
-}
-EOF
-fi
+    }' > "$TEMP_JSON"
 
 # Make API request
 HTTP_CODE=$(curl -s -w "%{http_code}" -o "$TEMP_RESPONSE" \
