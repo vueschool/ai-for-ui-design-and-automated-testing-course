@@ -1,27 +1,60 @@
-title: About Me
-description: Learn more about my journey as a Boston-based UX/UI Designer & Front-End Developer, my design philosophy, and my passion for crafting intuitive digital experiences.
-content: |
-  Hi, I'm **Emma Thompson**, a UX/UI Designer and Front-End Developer based right here in Boston. For the past six years, I've been immersed in the world of digital product creation, focusing on building experiences that are not just functional, but genuinely intuitive and engaging for users.
+title: About Mentora
+description: We are on a mission to transform education through personalized, expert-led tutoring that empowers students to reach their full potential.
 
-  My path started at **Boston University**, where I earned a degree in Interactive Design. It was there I discovered my dual passion for the visual language of design and the logical puzzle of code. Since then, I've honed my skills in both areas, believing that the best digital products are born from a deep understanding of both aesthetics and implementation.
+seo:
+  title: About Mentora - Transforming Education Through Personalized Tutoring
+  description: Learn about Mentora's mission, core values, and story. We bridge the gap between potential and achievement with accessible, high-quality education worldwide.
 
-  ### My Design Philosophy
+hero:
+  title: About Mentora
+  description: We are on a mission to transform education through personalized, expert-led tutoring that empowers students to reach their full potential.
 
-  My design philosophy is rooted in **empathy** and **problem-solving**. I believe great design starts with understanding the 'why' – the user's needs, motivations, and pain points. I use research, iterative prototyping (often with tools like Figma), and user testing to ensure the solutions I build are truly effective.
+mission:
+  label: Our Mission
+  heading: Bridging the gap between potential and achievement.
+  body: To bridge the gap between potential and achievement by providing accessible, high-quality, and personalized education to students worldwide.
+  image:
+    src: https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop
+    alt: Students collaborating at a table with laptops and notebooks
+  stats:
+    - value: "10k+"
+      label: STUDENTS EMPOWERED
+    - value: "200+"
+      label: EXPERT TUTORS
+    - value: "15+"
+      label: COUNTRIES REACHED
+    - value: "10+"
+      label: YEARS OF EXCELLENCE
 
-  I strive to create interfaces that feel effortless, where functionality and beauty work hand-in-hand. Whether I'm crafting pixel-perfect UIs or writing clean Vue.js/Nuxt.js code, my focus is always on creating value for the end-user.
+coreValues:
+  title: Our Core Values
+  subtitle: The principles that guide every interaction and decision at Mentora.
+  values:
+    - icon: i-lucide-graduation-cap
+      title: Excellence in Education
+      description: We are committed to the highest standards of teaching and learning, ensuring every student receives quality instruction from verified experts.
+    - icon: i-lucide-graduation-cap
+      title: Personalized Learning
+      description: Every student is unique. We tailor our approach to match individual learning styles, goals, and pace for maximum growth.
+    - icon: i-lucide-graduation-cap
+      title: Innovation First
+      description: We continuously evolve our methods and platform to incorporate the latest in educational research and technology.
+    - icon: i-lucide-graduation-cap
+      title: Empathy & Support
+      description: We create a supportive environment where students feel safe to ask questions, make mistakes, and grow with confidence.
 
-  ### What Drives Me
+story:
+  title: Our Story
+  paragraphs:
+    - Mentora was founded in 2015 by a group of passionate educators who saw too many students struggling with one-size-fits-all teaching. We believed there had to be a better way—one that honored each learner's unique potential.
+    - What started as a small local tutoring center in Boston quickly grew as word spread about our personalized, mentorship-driven approach. Students who had once felt left behind began to thrive, and their families took notice.
+    - Today, Mentora has grown into a global platform connecting students with expert tutors across subjects and time zones. Our founding belief remains at the heart of everything we do—with the right guidance, every student can excel.
 
-  What keeps me excited about this work is the constant learning and the challenge of translating complex ideas into simple, elegant solutions. There's nothing more rewarding than seeing a design come to life and knowing it's making someone's digital interaction easier or more enjoyable.
+gallery:
+  images:
+    - src: https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop
+      alt: Classroom with students and presenter at the front
+    - src: https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop
+      alt: Teacher engaging with students in a tutoring session
 
-  ### Beyond the Screen
-
-  When I'm not designing or coding, you might find me exploring Boston's latest coffee shops, hiking nearby trails, or occasionally contributing to open-source projects.
-
-  Thanks for stopping by. Feel free to browse my [projects](/projects) or [get in touch](/#contact) if you'd like to collaborate!
-images:
-  - src: https://images.unsplash.com/photo-1744877478622-a78c7a3336f6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: My coffee workspace
-  - src: https://images.unsplash.com/photo-1744429523595-2c06b8611242?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: My trip to Tokyo
+images: []

@@ -135,8 +135,38 @@ export default defineContentConfig({
       type: 'page',
       source: 'about.yml',
       schema: z.object({
-        content: z.object({}),
-        images: z.array(createImageSchema())
+        content: z.union([z.object({}), z.string()]).optional(),
+        images: z.array(createImageSchema()).optional(),
+        hero: z.object({
+          title: z.string(),
+          description: z.string()
+        }).optional(),
+        mission: z.object({
+          label: z.string(),
+          heading: z.string(),
+          body: z.string(),
+          image: createImageSchema(),
+          stats: z.array(z.object({
+            value: z.string(),
+            label: z.string()
+          }))
+        }).optional(),
+        coreValues: z.object({
+          title: z.string(),
+          subtitle: z.string(),
+          values: z.array(z.object({
+            icon: z.string(),
+            title: z.string(),
+            description: z.string()
+          }))
+        }).optional(),
+        story: z.object({
+          title: z.string(),
+          paragraphs: z.array(z.string())
+        }).optional(),
+        gallery: z.object({
+          images: z.array(createImageSchema())
+        }).optional()
       })
     })
   }
