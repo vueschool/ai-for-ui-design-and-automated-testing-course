@@ -17,7 +17,10 @@ const steps = computed(() => {
 </script>
 
 <template>
-  <section class="relative py-20 lg:py-32 overflow-hidden bg-[#1A1A1A]">
+  <section
+    data-testid="how-it-works"
+    class="relative py-20 lg:py-32 overflow-hidden bg-[#1A1A1A]"
+  >
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <!-- Left Column - Teacher Image -->
@@ -70,7 +73,10 @@ const steps = computed(() => {
             :transition="{ duration: 0.5, ease: 'easeOut' }"
             :in-view-options="{ once: true, amount: 0.5 }"
           >
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+            <h2
+            data-testid="how-it-works-title"
+            class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4"
+          >
               {{ page.howItWorks.title }}
             </h2>
           </Motion>
@@ -118,6 +124,7 @@ const steps = computed(() => {
             :in-view-options="{ once: true, amount: 0.5 }"
           >
             <UButton
+              data-testid="how-it-works-cta"
               size="xl"
               color="primary"
               variant="solid"

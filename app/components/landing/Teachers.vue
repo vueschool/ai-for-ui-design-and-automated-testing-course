@@ -20,7 +20,10 @@ const getBlobForTeacher = (index: number) => {
 </script>
 
 <template>
-  <section class="relative py-20 lg:py-32 overflow-hidden">
+  <section
+    data-testid="teachers"
+    class="relative py-20 lg:py-32 overflow-hidden"
+  >
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
       <div class="mb-12">
         <Motion
@@ -29,7 +32,10 @@ const getBlobForTeacher = (index: number) => {
           :transition="{ duration: 0.5, ease: 'easeOut' }"
           :in-view-options="{ once: true, amount: 0.5 }"
         >
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2
+          data-testid="teachers-title"
+          class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4"
+        >
             {{ page.teachers.title }}
           </h2>
         </Motion>
@@ -54,6 +60,7 @@ const getBlobForTeacher = (index: number) => {
           :transition="{ duration: 0.5, ease: 'easeOut', delay: index * 0.1 }"
           :in-view-options="{ once: true, amount: 0.2 }"
           class="group relative flex flex-col items-center p-6 rounded-3xl glass transition-all duration-300 hover:-translate-y-1 hover:bg-white/2"
+          :data-testid="`teacher-card-${index}`"
         >
           <!-- Gradient Border via pseudo-element -->
           <div class="absolute inset-0 rounded-3xl border border-white/5 group-hover:border-primary-500/30 transition-colors duration-300 pointer-events-none" />

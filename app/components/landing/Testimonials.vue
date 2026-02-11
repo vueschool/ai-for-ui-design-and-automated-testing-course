@@ -56,6 +56,7 @@ const splitQuote = (quote: string) => {
 <template>
   <Motion
     v-if="testimonials.length"
+    data-testid="testimonials"
     :initial="{ opacity: 0, y: 30 }"
     :in-view="{ opacity: 1, y: 0 }"
     :transition="{ duration: 0.6, ease: 'easeOut' }"
@@ -164,6 +165,7 @@ const splitQuote = (quote: string) => {
         </AnimatePresence>
         <div class="flex gap-4">
           <button
+            data-testid="testimonials-prev"
             class="h-7 w-7 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center group/button hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
             @click="handlePrev"
           >
@@ -173,6 +175,7 @@ const splitQuote = (quote: string) => {
             />
           </button>
           <button
+            data-testid="testimonials-next"
             class="h-7 w-7 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center group/button hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
             @click="handleNext"
           >

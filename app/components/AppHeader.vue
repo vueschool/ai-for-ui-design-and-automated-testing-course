@@ -7,7 +7,10 @@ defineProps<{
 </script>
 
 <template>
-  <div class="fixed top-2 sm:top-4 mx-auto left-1/2 transform -translate-x-1/2 z-20">
+  <div
+    data-testid="header"
+    class="fixed top-2 sm:top-4 mx-auto left-1/2 transform -translate-x-1/2 z-20"
+  >
     <UNavigationMenu
       :items="links"
       variant="link"

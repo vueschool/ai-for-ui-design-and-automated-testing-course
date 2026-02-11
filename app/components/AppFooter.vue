@@ -4,11 +4,12 @@ const { footer } = useAppConfig()
 
 <template>
   <UFooter
+    data-testid="footer"
     class="z-10 bg-default"
     :ui="{ left: 'text-muted text-xs' }"
   >
     <template #left>
-      {{ footer.credits }}
+      <span data-testid="footer-credits">{{ footer.credits }}</span>
     </template>
 
     <template #right>

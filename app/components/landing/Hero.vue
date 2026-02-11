@@ -35,7 +35,10 @@ const avatars = [
 </script>
 
 <template>
-  <section class="relative min-h-[90vh] lg:min-h-screen overflow-hidden">
+  <section
+    data-testid="hero"
+    class="relative min-h-[90vh] lg:min-h-screen overflow-hidden"
+  >
     <!-- Video Background -->
     <LandingHeroVideoBackground />
 
@@ -50,7 +53,10 @@ const avatars = [
             :animate="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.6, delay: 0.1 }"
           >
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.1] font-serif font-bold">
+            <h1
+              data-testid="hero-heading"
+              class="text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.1] font-serif font-bold"
+            >
               Learn from Expert Teachers,
               <br>
               Anytime, Anywhere
@@ -63,7 +69,10 @@ const avatars = [
             :animate="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.6, delay: 0.3 }"
           >
-            <p class="text-muted text-base sm:text-lg max-w-lg">
+            <p
+              data-testid="hero-description"
+              class="text-muted text-base sm:text-lg max-w-lg"
+            >
               {{ page.description }}
             </p>
           </Motion>
@@ -76,10 +85,12 @@ const avatars = [
           >
             <div
               v-if="page.hero?.links"
+              data-testid="hero-cta-buttons"
               class="flex flex-wrap gap-4"
             >
               <UButton
                 v-for="(link, index) in page.hero.links"
+                :data-testid="`hero-cta-${link.label.toLowerCase().replace(/\s/g, '-')}`"
                 :key="index"
                 v-bind="link"
                 size="xl"
@@ -94,7 +105,10 @@ const avatars = [
             :animate="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.6, delay: 0.7 }"
           >
-            <div class="mt-2 p-2 rounded-xl glass-strong border border-primary/30 flex flex-col sm:flex-row gap-2">
+            <div
+                data-testid="hero-search-bar"
+                class="mt-2 p-2 rounded-xl glass-strong border border-primary/30 flex flex-col sm:flex-row gap-2"
+              >
               <USelect
                 v-model="selectedSubject"
                 placeholder="Subject"
@@ -120,6 +134,7 @@ const avatars = [
                 }"
               />
               <UButton
+                data-testid="hero-search-button"
                 icon="i-lucide-search"
                 size="xl"
                 class="px-5"
@@ -146,6 +161,7 @@ const avatars = [
               <template #trigger>
                 <button
                   type="button"
+                  data-testid="hero-play-video"
                   class="relative cursor-pointer group block w-full text-left rounded-xl overflow-hidden"
                   aria-label="Play video"
                 >
@@ -178,7 +194,10 @@ const avatars = [
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.6, delay: 0.9 }"
       >
-        <div class="mt-12 lg:mt-16 p-6 rounded-2xl bg-gradient-to-r from-[#1a1a1a]/90 via-[#2a1a15]/80 to-[#1a1a1a]/90 backdrop-blur-md border border-primary/20">
+        <div
+          data-testid="hero-social-proof"
+          class="mt-12 lg:mt-16 p-6 rounded-2xl bg-gradient-to-r from-[#1a1a1a]/90 via-[#2a1a15]/80 to-[#1a1a1a]/90 backdrop-blur-md border border-primary/20"
+        >
           <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
             <!-- Stars with orange-gold gradient -->
             <div class="flex gap-1">
