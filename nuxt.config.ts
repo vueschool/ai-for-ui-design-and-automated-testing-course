@@ -31,7 +31,8 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: [
-        '/'
+        '/',
+        '/teachers'
       ],
       crawlLinks: true
     }

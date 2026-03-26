@@ -60,6 +60,7 @@ export default defineContentConfig({
             name: z.string(),
             role: z.string(),
             description: z.string(),
+            featured: z.boolean().optional(),
             avatar: z.object({
               src: z.string(),
               srcset: z.string().optional()
